@@ -87,6 +87,10 @@ class GitRepositoryTest extends \PHPUnit_Framework_TestCase
                 'remoteBranch' => 'origin/master',
                 'ahead' => 0,
                 'behind' => 0,
+                'log' => [
+                    'ahead' => [],
+                    'behind' => []
+                ]
             ],
             $localRepository->getTrackingInformation()
         );
@@ -106,6 +110,10 @@ class GitRepositoryTest extends \PHPUnit_Framework_TestCase
                 'remoteBranch' => 'origin/master',
                 'ahead' => 1,
                 'behind' => 1,
+                'log' => [
+                    'ahead' => [],
+                    'behind' => []
+                ]
             ],
             $localRepository->getTrackingInformation()
         );
@@ -124,6 +132,10 @@ class GitRepositoryTest extends \PHPUnit_Framework_TestCase
                 'remoteBranch' => 'origin/master',
                 'ahead' => 0,
                 'behind' => 1,
+                'log' => [
+                    'ahead' => [],
+                    'behind' => []
+                ]
             ],
             $localRepository->getTrackingInformation()
         );
@@ -136,6 +148,10 @@ class GitRepositoryTest extends \PHPUnit_Framework_TestCase
                 'remoteBranch' => 'origin/master',
                 'ahead' => 0,
                 'behind' => 0,
+                'log' => [
+                    'ahead' => [],
+                    'behind' => []
+                ]
             ],
             $localRepository->getTrackingInformation()
         );
@@ -152,6 +168,10 @@ class GitRepositoryTest extends \PHPUnit_Framework_TestCase
                 'remoteBranch' => 'origin/master',
                 'ahead' => 1,
                 'behind' => 0,
+                'log' => [
+                    'ahead' => [],
+                    'behind' => []
+                ]
             ],
             $localRepository->getTrackingInformation()
         );
@@ -164,6 +184,10 @@ class GitRepositoryTest extends \PHPUnit_Framework_TestCase
                 'remoteBranch' => 'origin/master',
                 'ahead' => 0,
                 'behind' => 0,
+                'log' => [
+                    'ahead' => [],
+                    'behind' => []
+                ]
             ],
             $localRepository->getTrackingInformation()
         );
