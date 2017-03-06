@@ -6,7 +6,7 @@ class GitRepository
     /**
      * @var string
      */
-    protected $directoy;
+    protected $directory;
 
     /**
      * @var GitWrapper
@@ -25,7 +25,7 @@ class GitRepository
     public function __construct(GitWrapper $wrapper, $directory)
     {
         $this->wrapper = $wrapper;
-        $this->directoy = $directory;
+        $this->directory = $directory;
     }
 
     /**
@@ -33,7 +33,7 @@ class GitRepository
      */
     public function getDirectory()
     {
-        return $this->directoy;
+        return $this->directory;
     }
 
     /**
@@ -45,8 +45,8 @@ class GitRepository
     public function create($cloneUrl, array $options = [], array $arguments = [])
     {
         $arguments[] = $cloneUrl;
-        $arguments[] = basename($this->directoy);
-        $this->__lastResult = $this->wrapper->execute('clone', $options, $arguments, dirname($this->directoy), null);
+        $arguments[] = basename($this->directory);
+        $this->__lastResult = $this->wrapper->execute('clone', $options, $arguments, dirname($this->directory), null);
 
         return trim($this->__lastResult);
     }
@@ -58,7 +58,7 @@ class GitRepository
      */
     public function branch(array $options = [], array $arguments = [])
     {
-        $this->__lastResult = $this->wrapper->execute('branch', $options, $arguments, $this->directoy, null);
+        $this->__lastResult = $this->wrapper->execute('branch', $options, $arguments, $this->directory, null);
 
         return $this->splitOutput($this->__lastResult);
     }
@@ -70,7 +70,7 @@ class GitRepository
      */
     public function checkout(array $options = [], array $arguments = [])
     {
-        $this->__lastResult = $this->wrapper->execute('checkout', $options, $arguments, $this->directoy, null);
+        $this->__lastResult = $this->wrapper->execute('checkout', $options, $arguments, $this->directory, null);
 
         return trim($this->__lastResult);
     }
@@ -82,7 +82,7 @@ class GitRepository
      */
     public function fetch(array $options = [], array $arguments = [])
     {
-        $this->__lastResult = $this->wrapper->execute('fetch', $options, $arguments, $this->directoy, null);
+        $this->__lastResult = $this->wrapper->execute('fetch', $options, $arguments, $this->directory, null);
 
         return trim($this->__lastResult);
     }
@@ -92,7 +92,7 @@ class GitRepository
      */
     public function getCurrentBranch()
     {
-        $this->__lastResult = $this->wrapper->execute('rev-parse', ['abbrev-ref'], ['HEAD'], $this->directoy);
+        $this->__lastResult = $this->wrapper->execute('rev-parse', ['abbrev-ref'], ['HEAD'], $this->directory);
 
         return trim($this->__lastResult);
     }
@@ -134,7 +134,7 @@ class GitRepository
      */
     public function hasTrackingBranch()
     {
-        $output = $this->splitOutput($this->wrapper->execute('status', ['s', 'b'], [], $this->directoy));
+        $output = $this->splitOutput($this->wrapper->execute('status', ['s', 'b'], [], $this->directory));
         $this->__lastResult = $output[0];
 
         return strpos($this->__lastResult, '...') !== false;
@@ -147,7 +147,7 @@ class GitRepository
      */
     public function log(array $options = [], array $arguments = [])
     {
-        $this->__lastResult = $this->wrapper->execute('log', $options, $arguments, $this->directoy, null);
+        $this->__lastResult = $this->wrapper->execute('log', $options, $arguments, $this->directory, null);
 
         return trim($this->__lastResult);
     }
@@ -159,7 +159,7 @@ class GitRepository
      */
     public function pull(array $options = [], array $arguments = [])
     {
-        $this->__lastResult = $this->wrapper->execute('pull', $options, $arguments, $this->directoy, null);
+        $this->__lastResult = $this->wrapper->execute('pull', $options, $arguments, $this->directory, null);
 
         return trim($this->__lastResult);
     }
@@ -171,7 +171,7 @@ class GitRepository
      */
     public function reset(array $options = [], array $arguments = [])
     {
-        $this->__lastResult = $this->wrapper->execute('reset', $options, $arguments, $this->directoy, null);
+        $this->__lastResult = $this->wrapper->execute('reset', $options, $arguments, $this->directory, null);
 
         return trim($this->__lastResult);
     }
@@ -181,7 +181,7 @@ class GitRepository
      */
     public function getStatus()
     {
-        $this->__lastResult = $this->wrapper->execute('status', ['s'], [], $this->directoy);
+        $this->__lastResult = $this->wrapper->execute('status', ['s'], [], $this->directory);
 
         return $this->__lastResult;
     }
